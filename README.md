@@ -17,3 +17,7 @@ Status: planning. Implementation of each phase waits for the owner's permission 
 ## Scope
 
 Rails 8.1.x and the gems `rails new` produces, plus rspec-rails. Ruby 3.4.x. Nothing else until the doctrine says otherwise.
+
+## Tracker
+
+Parent: [jedt3d/rails-doctrine#1](https://github.com/jedt3d/rails-doctrine/issues/1). Phases: #2 lab, #3 doctrine, #4 hooks, #5 skills, #6 evals, #7 MCP (conditional), #8 maintenance. Blocking edges are native issue dependencies; the owner permits implementation by relabeling a phase `ready-for-agent`.
