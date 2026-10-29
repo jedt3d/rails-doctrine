@@ -38,6 +38,14 @@ Without measurement, a doctrine can only make Claude more dogmatic without anyon
 
 ## Checklist
 
+- [ ] `evals/PREREGISTRATION.md` committed and tagged `evals-v1` before any skill exists: pass criteria, noise-floor arithmetic, held-out split rule, oracle and null definitions, judge protocol.
+- [ ] Held-out split (30 percent, stratified by rule area) drawn at random and recorded; train and held-out baseline means agree within noise.
+- [ ] Oracle diff passes every check; empty and drifted null diffs fail.
+- [ ] Judge fails the three known negatives; judged items are anonymized, order-randomized, atomic, with a required quote.
+- [ ] Owner calibration set of 20 to 30 judged items labelled once; agreement reported.
+- [ ] Task authoring session received only rule statements and sources, recorded in the task files' provenance field.
+- [ ] Mechanism check: score drops with rules removed; transcripts show rules and skills loading.
+
 - [ ] Verification ticket: kept workspaces are complete enough for mechanical checks, or the fallback runner is chosen and recorded.
 - [ ] Case layout and grader files for one dry-run task committed and passing end to end.
 - [ ] Twenty-five to thirty tasks written, each naming rule ids and carrying mechanical checks and judged items.

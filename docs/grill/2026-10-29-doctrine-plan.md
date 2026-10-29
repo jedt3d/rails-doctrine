@@ -82,7 +82,7 @@ Sources: code.claude.com/docs/en/memory.md (size target, `.claude/rules/`, `path
 
 ❓ **Q9** - **Distribution**: Ship skills and hooks as a Claude Code plugin (manifest plus `hooks/hooks.json`), and ship CLAUDE.md, `.claude/rules/` and the allowlist through `bin/doctrine install`?
 
-➡️ Yes. **OWNER DECISION** (structural; reversible early, costly later).
+➡️ Yes. **OWNER DECISION: accepted 2026-10-29** (ADR-0006).
 
 **Answer**: Three facts push toward a plugin: `claude plugin eval` only targets a plugin, so the eval harness needs one anyway; plugins update in place across projects; hooks and skills are first-class plugin contents. Rules files and CLAUDE.md are per-project files, so an install script writes them and a `doctrine update` re-renders them from the pinned rule records. Alternative rejected: copying `.claude/` by hand into each app (no updates, no evals).
 Sources: code.claude.com/docs/en/plugin-evals.md; plugins/manifest-reference.md; plugins/loading.md.
