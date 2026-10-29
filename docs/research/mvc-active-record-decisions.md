@@ -347,7 +347,7 @@ Guide confirmation (https://guides.rubyonrails.org/association_basics.html, sect
 
 > "Delegated types solves the Single Table Inheritance (STI) problem of table bloat via delegated_type. This approach allows us to store shared attributes in a superclass table and have separate tables for subclass-specific attributes."
 
-Manrubia notes the origin: "A core domain entity in Basecamp is a Recording. Most elements a user manages in Basecamp are recordings — the original use case that motivated Rails' delegated types." (https://dev.37signals.com/vanilla-rails-is-plenty/)
+Manrubia notes the origin: "A core domain entity in Basecamp is a Recording. Most elements a user manages in Basecamp are recordings, the original use case that motivated Rails' delegated types." (https://dev.37signals.com/vanilla-rails-is-plenty/)
 
 #### 3.3.4 `strict_loading` / `strict_loading_by_default`
 
@@ -473,7 +473,7 @@ Callbacks in practice (from "Active Record, nice and blended"): the `Filing` exa
 
 DHH in the comments (May 20, 2019): "I don't see any fundamental improvement that alters the equation. Integrate your systems until it's impossible for one person to hold it all in their head. We still haven't gotten there with Basecamp or any of our apps."
 
-**DHH, Rails 8.0 announcement** (Nov 7 2024), https://rubyonrails.org/2024/11/7/rails-8-no-paas-required — the only first-party text found this session that uses the "compressing complexity" phrasing:
+**DHH, Rails 8.0 announcement** (Nov 7 2024), https://rubyonrails.org/2024/11/7/rails-8-no-paas-required, the only first-party text found this session that uses the "compressing complexity" phrasing:
 
 > "Whether you're into #NOBUILD or #NOPAAS or simply attracted to the mission of compressing complexity in general, you'll be right at home with a community of passionate builders who value beautiful code as much as they do productivity."
 
@@ -497,7 +497,7 @@ Source: https://github.com/rails/rails/issues/50446 ("Add basic authentication g
 
 ### 4.2 The PR that shipped it (#52328)
 
-Source: https://github.com/rails/rails/pull/52328 — title "Add basic sessions generator", author dhh, merged July 16, 2024. Opening post (same fragment caveat):
+Source: https://github.com/rails/rails/pull/52328, title "Add basic sessions generator", author dhh, merged July 16, 2024. Opening post (same fragment caveat):
 
 > "Adds a basic sessions generator to get people started with their own authentication system."
 
@@ -513,7 +513,7 @@ Generator USAGE on `main` (https://raw.githubusercontent.com/rails/rails/main/ra
 
 ### 4.3 What the generator emits (verbatim templates on `main`)
 
-`app/controllers/concerns/authentication.rb` — https://raw.githubusercontent.com/rails/rails/main/railties/lib/rails/generators/rails/authentication/templates/app/controllers/concerns/authentication.rb.tt
+`app/controllers/concerns/authentication.rb`, https://raw.githubusercontent.com/rails/rails/main/railties/lib/rails/generators/rails/authentication/templates/app/controllers/concerns/authentication.rb.tt
 
 ```ruby
 module Authentication
@@ -604,7 +604,7 @@ Section 2, "Authentication":
 
 > "You can find all of the details for the Authentication generator in the Rails source code. You are encouraged to explore the implementation details and not treat authentication as a black box."
 
-Section 6.6, "Privilege Escalation" — the guide's authorization pattern (scoping through the current user):
+Section 6.6, "Privilege Escalation", the guide's authorization pattern (scoping through the current user):
 
 > "Changing a single parameter may give the user unauthorized access. Remember that every parameter may be changed, no matter how much you hide or obfuscate it."
 
@@ -645,9 +645,9 @@ Notable removals and deprecations in 8.0:
 |---|---|---|
 | Railties | `config.read_encrypted_secrets`; `rails/console/app`; `rails/console/helpers`; extending console via `Rails::ConsoleMethods` | requiring `"rails/console/methods"`; modifying `STATS_DIRECTORIES` (use `Rails::CodeStatistics.register_directory`); `bin/rake stats` (use `bin/rails stats`) |
 | Action Pack | `config.action_controller.allow_deprecated_parameters_hash_equality` | "Deprecate drawing routes with multiple paths to make routing faster." |
-| Action View | passing `nil` to `model:` of `form_with`; passing content to void tag elements | — |
+| Action View | passing `nil` to `model:` of `form_with`; passing content to void tag elements |, |
 | Active Record | `commit_transaction_on_non_local_return`; `allow_deprecated_singular_associations_name`; unregistered adapters; enum with keyword args; `warn_on_records_fetched_greater_than`; `sqlite3_deprecated_warning`; `ConnectionPool#connection`; db name to `cache_dump_filename`; `ENV["SCHEMA_CACHE"]` | SQLite3Adapter `retries` option (use `timeout`) |
-| Active Storage | — | Azure backend |
+| Active Storage |, | Azure backend |
 | Active Support | `ActiveSupport::ProxyObject`; `attr_internal_naming_format` with `@` prefix; array of strings to `Deprecation#warn` | `Benchmark.ms`; addition/`since` between `Time` and `ActiveSupport::TimeWithZone` |
 | Active Job | `config.active_job.use_big_decimal_serializer` | `enqueue_after_transaction_commit`; internal SuckerPunch adapter |
 
@@ -671,10 +671,10 @@ Notable removals and deprecations in 8.1:
 
 | Framework | Removals | Deprecations |
 |---|---|---|
-| Railties | `rails/console/methods.rb`; `bin/rake stats`; `STATS_DIRECTORIES` | — |
+| Railties | `rails/console/methods.rb`; `bin/rake stats`; `STATS_DIRECTORIES` |, |
 | Action Pack | skipping leading brackets in param names; semicolons as query-string separator; a route to multiple paths | `config.action_dispatch.ignore_leading_brackets` |
 | Active Record | SQLite3 `:retries`; MySQL `:unsigned_float` / `:unsigned_decimal` | order-dependent finders (e.g. `#first`) without an order; `ActiveRecord::Base.signed_id_verifier_secret` (use `Rails.application.message_verifiers` / `Model.signed_id_verifier`); `insert_all`/`upsert_all` with unpersisted records in associations; `WITH`, `WITH RECURSIVE`, `DISTINCT` with `update_all` |
-| Active Storage | `:azure` storage service | — |
+| Active Storage | `:azure` storage service |, |
 | Active Support | passing `Time` to `Time#since`; `Benchmark.ms`; `Time + TimeWithZone`; `to_time` preserving system local time | `config.active_support.to_time_preserves_timezone`; `String#mb_chars` and `ActiveSupport::Multibyte::Chars`; `ActiveSupport::Configurable` |
 | Active Job | `enqueue_after_transaction_commit` set to `:never`/`:always`/`:default`; `config.active_job.enqueue_after_transaction_commit`; internal SuckerPunch adapter | custom serializers must have public `#klass`; built-in sidekiq adapter (now in the sidekiq gem) |
 
@@ -724,7 +724,7 @@ The page also lists an Issues team (Adam Hess, Adrianna Chang, Akhil G Krishnan,
 
 ## 7. Claims I could not source (or could only partially source)
 
-1. **DHH's "conceptual compression" essay.** The Signal v. Noise post "Conceptual compression means beginners don't need to know SQL — and that's a good thing" redirects from m.signalvnoise.com to signalvnoise.com and returns HTTP 404 there; the Wayback Machine was not reachable from this session. The phrase appears first-hand only as "the mission of compressing complexity in general" in the Rails 8.0 announcement (quoted in 3.4). All other hits were secondhand write-ups of the RailsConf 2018 keynote, which I did not use.
+1. **DHH's "conceptual compression" essay.** The Signal v. Noise post "Conceptual compression means beginners don't need to know SQL, and that's a good thing" redirects from m.signalvnoise.com to signalvnoise.com and returns HTTP 404 there; the Wayback Machine was not reachable from this session. The phrase appears first-hand only as "the mission of compressing complexity in general" in the Rails 8.0 announcement (quoted in 3.4). All other hits were secondhand write-ups of the RailsConf 2018 keynote, which I did not use.
 2. **DHH's "Rails is omakase" (2012) essay.** `david.heinemeierhansson.com` does not resolve from this session (host not in the allowed network list), so the original essay is not quoted; the Doctrine's "The menu is omakase" section (quoted in 1.2) is the first-party source used instead.
 3. **A DHH text using the exact phrase "rich domain model".** Not found on rubyonrails.org, world.hey.com, or signalvnoise.com this session. The phrase is sourced to Jorge Manrubia (37signals Director of Product Development) in "Vanilla Rails is plenty". DHH's nearest first-party wording is the Doctrine's "we generally treat the model in our MVC layer cake as the prime bastion of object-oriented goodness".
 4. **world.hey.com/dhh posts.** My one guessed URL returned the HEY World marketing page, not a post; no hey.com post is quoted. The "majestic monolith" and "vanilla Rails" positions are therefore sourced from the Doctrine, m.signalvnoise.com, and dev.37signals.com.
